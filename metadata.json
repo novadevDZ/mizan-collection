@@ -1,0 +1,6 @@
+{
+  "name": "Mizan Collection",
+  "description": "منصة ذكية لإدارة ومتابعة ديون العملاء والتحصيل للموزعين وتجار الجملة في الجزائر - استرجع أموالك بذكاء.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

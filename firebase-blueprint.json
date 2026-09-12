@@ -1,0 +1,128 @@
+{
+  "entities": {
+    "organizations": {
+      "title": "Organization",
+      "description": "Algerian business organization managing debtor accounts",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "tradeName": { "type": "string" },
+        "legalName": { "type": "string" },
+        "commercialRegister": { "type": "string" },
+        "taxNumber": { "type": "string" },
+        "businessType": { "type": "string" },
+        "wilaya": { "type": "string" },
+        "phone": { "type": "string" },
+        "currency": { "type": "string" },
+        "plan": { "type": "string" },
+        "ownerId": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "name", "wilaya", "ownerId"]
+    },
+    "users": {
+      "title": "User",
+      "description": "User profile associated with an organization",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "organizationId": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "role": { "type": "string", "enum": ["owner", "manager", "collector"] },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "organizationId", "name", "email", "role"]
+    },
+    "customers": {
+      "title": "Customer",
+      "description": "Debtor commercial clients and merchants per organization",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "organizationId": { "type": "string" },
+        "accountNumber": { "type": "string" },
+        "name": { "type": "string" },
+        "companyName": { "type": "string" },
+        "phone": { "type": "string" },
+        "whatsapp": { "type": "string" },
+        "address": { "type": "string" },
+        "wilaya": { "type": "string" },
+        "creditLimit": { "type": "number" },
+        "totalInvoiced": { "type": "number" },
+        "totalPaid": { "type": "number" },
+        "outstandingBalance": { "type": "number" },
+        "overdueBalance": { "type": "number" },
+        "riskScore": { "type": "number" },
+        "riskLevel": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "organizationId", "name", "phone", "wilaya"]
+    },
+    "invoices": {
+      "title": "Invoice",
+      "description": "Commercial debt invoices per customer and organization",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "organizationId": { "type": "string" },
+        "customerId": { "type": "string" },
+        "customerName": { "type": "string" },
+        "invoiceNumber": { "type": "string" },
+        "issueDate": { "type": "string" },
+        "dueDate": { "type": "string" },
+        "total": { "type": "number" },
+        "paidAmount": { "type": "number" },
+        "remainingAmount": { "type": "number" },
+        "status": { "type": "string" },
+        "daysOverdue": { "type": "number" }
+      },
+      "required": ["id", "organizationId", "customerId", "invoiceNumber", "total"]
+    },
+    "payments": {
+      "title": "Payment",
+      "description": "Payment receipts collected from debtors per organization",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "organizationId": { "type": "string" },
+        "customerId": { "type": "string" },
+        "customerName": { "type": "string" },
+        "receiptNumber": { "type": "string" },
+        "paymentDate": { "type": "string" },
+        "amount": { "type": "number" },
+        "paymentMethod": { "type": "string" },
+        "collectedByName": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "organizationId", "customerId", "amount", "paymentDate"]
+    },
+    "products": {
+      "title": "Product",
+      "description": "Products and merchandise inventory managed by the organization",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "organizationId": { "type": "string" },
+        "name": { "type": "string" },
+        "barcode": { "type": "string" },
+        "sku": { "type": "string" },
+        "category": { "type": "string" },
+        "unit": { "type": "string" },
+        "purchasePrice": { "type": "number" },
+        "salePrice": { "type": "number" },
+        "minSalePrice": { "type": "number" },
+        "stockQuantity": { "type": "number" },
+        "minStockAlert": { "type": "number" },
+        "packaging": { "type": "string" },
+        "description": { "type": "string" },
+        "status": { "type": "string", "enum": ["in_stock", "low_stock", "out_of_stock"] },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "organizationId", "name", "salePrice"]
+    }
+  }
+}
