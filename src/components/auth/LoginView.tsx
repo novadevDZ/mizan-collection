@@ -513,7 +513,7 @@ export const LoginView: React.FC<LoginViewProps> = ({
                     <Building2 className="w-3.5 h-3.5 text-emerald-400" />
                     مؤسسة التوزيع السريع الجزائر
                   </span>
-                  <span className="text-slate-400 font-mono">DZD • 58 ولاية</span>
+                  <span className="text-slate-400 font-mono">DZD • 69 ولاية</span>
                 </div>
 
                 <button

@@ -121,7 +121,7 @@ export const CustomerList: React.FC<CustomerListProps> = ({
           onChange={(e) => setSelectedWilaya(e.target.value)}
           className="w-full md:w-44 py-1.5 px-2 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-800 focus:outline-none focus:border-emerald-500"
         >
-          <option value="all">كل الولايات (58)</option>
+          <option value="all">كل الولايات (69)</option>
           {ALGERIA_WILAYAS.map((w) => (
             <option key={w.code} value={w.nameAr}>
               {w.code} - {w.nameAr}

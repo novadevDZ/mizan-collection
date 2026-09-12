@@ -1,0 +1,13 @@
+# robots.txt for Mizan Collection (https://mizan-collection.onrender.com)
+User-agent: *
+Allow: /
+Allow: /#features
+Allow: /#calculator
+Allow: /#faq
+Allow: /#preview
+
+# Disallow internal API and health check endpoints
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://mizan-collection.onrender.com/sitemap.xml

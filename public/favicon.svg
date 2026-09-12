@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="16" fill="#020617"/>
+  <rect x="2" y="2" width="60" height="60" rx="14" stroke="#10b981" stroke-width="2" stroke-opacity="0.4"/>
+  <!-- Mizan Scales Symbol -->
+  <path d="M32 14v36M24 50h16" stroke="#10b981" stroke-width="3" stroke-linecap="round"/>
+  <path d="M18 24l14-4 14 4" stroke="#34d399" stroke-width="3" stroke-linecap="round"/>
+  <!-- Left Pan -->
+  <path d="M12 28l6-4 6 4" stroke="#34d399" stroke-width="2" stroke-linecap="round"/>
+  <path d="M14 36c0 4 4 6 4 6s4-2 4-6" stroke="#10b981" stroke-width="2.5" fill="#064e3b" fill-opacity="0.4"/>
+  <path d="M14 36l-2-8M22 36l2-8" stroke="#34d399" stroke-width="1.5"/>
+  <!-- Right Pan -->
+  <path d="M40 28l6-4 6 4" stroke="#34d399" stroke-width="2" stroke-linecap="round"/>
+  <path d="M42 36c0 4 4 6 4 6s4-2 4-6" stroke="#10b981" stroke-width="2.5" fill="#064e3b" fill-opacity="0.4"/>
+  <path d="M42 36l-2-8M50 36l2-8" stroke="#34d399" stroke-width="1.5"/>
+  <!-- Core Accent Dot -->
+  <circle cx="32" cy="20" r="3" fill="#34d399"/>
+</svg>

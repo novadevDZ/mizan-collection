@@ -58,8 +58,8 @@ export const AlgerianLandingPage: React.FC<AlgerianLandingPageProps> = ({
 
   const faqs = [
     {
-      q: 'هل يدعم نظام ميزان كافة الولايات الـ 58 في الجزائر؟',
-      a: 'نعم، المنظومة مهيأة خصيصاً للسوق الجزائري وتدعم كل الولايات من الجزائر ووهران وقسنطينة وسطيف إلى ورقلة وتمنراست، مع تصنيف جغرافي دقيق لشبكات التوزيع والزبائن.'
+      q: 'هل يدعم نظام ميزان كافة الولايات الـ 69 في الجزائر؟',
+      a: 'نعم، المنظومة مهيأة خصيصاً للسوق الجزائري وتدعم كل الولايات من الجزائر ووهران وقسنطينة وسطيف إلى بوسعادة وبريكة وقصر البخاري وورقلة وتمنراست، مع تصنيف جغرافي دقيق لشبكات التوزيع والزبائن.'
     },
     {
       q: 'هل يمكنني استيراد بيانات زبائني الحالية من ملفات Excel؟',
@@ -100,7 +100,7 @@ export const AlgerianLandingPage: React.FC<AlgerianLandingPageProps> = ({
       {/* Top Algerian Banner */}
       <div className="bg-gradient-to-r from-emerald-700 via-emerald-600 to-teal-700 text-white text-xs py-2.5 px-4 text-center font-bold shadow-xs flex items-center justify-center gap-2">
         <span className="inline-block w-2 h-2 rounded-full bg-emerald-300 animate-pulse" />
-        <span>🇩🇿 مصمم خصيصاً للموزعين، تجار الجملة والشركات في الجزائر • يدعم 58 ولاية • الدينار الجزائري (DZD) • بريدي موب و CCP</span>
+        <span>🇩🇿 مصمم خصيصاً للموزعين، تجار الجملة والشركات في الجزائر • يدعم 69 ولاية • الدينار الجزائري (DZD) • بريدي موب و CCP</span>
       </div>
 
       {/* Main Navigation */}
@@ -247,7 +247,7 @@ export const AlgerianLandingPage: React.FC<AlgerianLandingPageProps> = ({
               <div className="text-[11px] text-slate-400">تسريع دورة السيولة النقدية</div>
             </div>
             <div className="bg-slate-900/90 border border-slate-800 p-4 rounded-xl">
-              <div className="text-2xl sm:text-3xl font-black text-cyan-400 font-mono">58</div>
+              <div className="text-2xl sm:text-3xl font-black text-cyan-400 font-mono">69</div>
               <div className="text-xs text-slate-300 font-semibold mt-1">ولاية جزائرية مغطاة</div>
               <div className="text-[11px] text-slate-400">شبكات التوزيع وتجار الجملة</div>
             </div>

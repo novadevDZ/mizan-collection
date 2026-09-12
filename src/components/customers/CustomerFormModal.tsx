@@ -127,7 +127,7 @@ export const CustomerFormModal: React.FC<CustomerFormModalProps> = ({ onClose, o
             </div>
 
             <div>
-              <label className="font-bold text-slate-700 block mb-1">الولاية (58 ولاية)</label>
+              <label className="font-bold text-slate-700 block mb-1">الولاية (69 ولاية)</label>
               <select
                 value={formData.wilaya}
                 onChange={(e) => setFormData({ ...formData, wilaya: e.target.value })}

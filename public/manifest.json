@@ -1,0 +1,20 @@
+{
+  "name": "Mizan Collection | ميزان للتحصيل",
+  "short_name": "ميزان",
+  "description": "منصة ذكية لإدارة ومتابعة ديون العملاء والتحصيل للموزعين وتجار الجملة في الجزائر - استرجع أموالك بذكاء.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#10b981",
+  "lang": "ar-DZ",
+  "dir": "rtl",
+  "categories": ["finance", "business", "productivity"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
