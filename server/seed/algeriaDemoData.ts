@@ -14,6 +14,14 @@ export const DEMO_ORG: Organization = {
 
 export const DEMO_USERS: User[] = [
   {
+    id: 'user-demo',
+    name: 'أمين بن علي (المدير العام)',
+    email: 'demo@mizan.dz',
+    phone: '0550 11 22 33',
+    role: 'owner',
+    organizationId: 'org-algeria-dist-01',
+  },
+  {
     id: 'user-01',
     name: 'أمين بن علي',
     email: 'amine@distri-alger.dz',

@@ -3,7 +3,7 @@ import {
   Building2, Lock, Mail, ArrowLeft, ShieldCheck, ShieldAlert,
   Sparkles, CheckCircle2, UserCheck, AlertCircle, Eye, EyeOff,
   UserPlus, Phone, MapPin, Briefcase, FileCheck, ArrowRight,
-  KeyRound, Loader2, X
+  KeyRound, Loader2, X, Copy, Check
 } from 'lucide-react';
 import { User, Organization } from '../../types';
 import { ALGERIA_WILAYAS } from '../../lib/algeriaData';
@@ -28,6 +28,19 @@ export const LoginView: React.FC<LoginViewProps> = ({
   // Login Form State
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
+  const [copiedField, setCopiedField] = useState<string | null>(null);
+
+  const copyToClipboard = (text: string, field: string) => {
+    navigator.clipboard?.writeText(text);
+    setCopiedField(field);
+    setTimeout(() => setCopiedField(null), 2000);
+  };
+
+  const handleFillDemo = (email: string = 'demo@mizan.dz', pass: string = 'Mizan2026!') => {
+    setLoginEmail(email);
+    setLoginPassword(pass);
+    setError(null);
+  };
 
   // Master Console Gateway State
   const [showMasterModal, setShowMasterModal] = useState(false);
@@ -411,50 +424,98 @@ export const LoginView: React.FC<LoginViewProps> = ({
           {/* ======================= LOGIN VIEW ======================= */}
           {authMode === 'login' && (
             <>
-              {/* Fastest 1-Click Access without Google */}
-              <div className="mb-5 p-3.5 rounded-xl bg-gradient-to-r from-emerald-950/80 via-slate-900 to-teal-950/80 border border-emerald-500/30 space-y-2.5">
+              {/* Official Demo Credentials Card */}
+              <div className="mb-5 p-4 rounded-2xl bg-gradient-to-br from-slate-900 via-slate-900 to-emerald-950/70 border border-emerald-500/40 shadow-xl space-y-3">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-black text-emerald-400 flex items-center gap-1.5">
                     <Sparkles className="w-4 h-4 text-emerald-400 animate-pulse" />
-                    أسرع طريقة للدخول بنقرة واحدة (بدون Google)
+                    بيانات الحساب التجريبي المعتمد (Demo Credentials)
                   </span>
-                  <span className="text-[10px] text-emerald-300 font-bold bg-emerald-900/80 px-2 py-0.5 rounded-full border border-emerald-500/30">
-                    ⚡ فوري وتلقائي
+                  <span className="text-[10px] text-emerald-300 font-bold bg-emerald-900/80 px-2.5 py-0.5 rounded-full border border-emerald-500/30">
+                    🇩🇿 بيانات جزائرية كاملة
                   </span>
                 </div>
+
                 <p className="text-[11px] text-slate-300 leading-relaxed">
-                  اختر حساباً تجريبياً جاهزاً للدخول فوراً دون الحاجة لكتابة بريد أو كلمة مرور:
+                  حساب مُحمّل ببيانات تجريبية كاملة (زبائن، فواتير DZD، موازين أعمار، تسويات بريدي موب، ومهام تحصيل):
                 </p>
-                <div className="grid grid-cols-2 gap-2 pt-0.5">
+
+                {/* Credentials Box */}
+                <div className="bg-slate-950/90 rounded-xl p-3 border border-slate-800 space-y-2 font-mono text-xs">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] text-slate-400 font-sans">البريد الإلكتروني:</span>
+                      <span className="text-emerald-300 font-bold select-all">demo@mizan.dz</span>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => copyToClipboard('demo@mizan.dz', 'email')}
+                      className="text-[10px] text-slate-400 hover:text-emerald-300 flex items-center gap-1 px-1.5 py-0.5 rounded hover:bg-slate-800 transition-colors cursor-pointer"
+                      title="نسخ البريد"
+                    >
+                      {copiedField === 'email' ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                      <span>{copiedField === 'email' ? 'تم النسخ' : 'نسخ'}</span>
+                    </button>
+                  </div>
+
+                  <div className="flex items-center justify-between pt-1.5 border-t border-slate-800/80">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] text-slate-400 font-sans">كلمة المرور:</span>
+                      <span className="text-emerald-300 font-bold select-all">Mizan2026!</span>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => copyToClipboard('Mizan2026!', 'pass')}
+                      className="text-[10px] text-slate-400 hover:text-emerald-300 flex items-center gap-1 px-1.5 py-0.5 rounded hover:bg-slate-800 transition-colors cursor-pointer"
+                      title="نسخ كلمة المرور"
+                    >
+                      {copiedField === 'pass' ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                      <span>{copiedField === 'pass' ? 'تم النسخ' : 'نسخ'}</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2 pt-1">
                   <button
                     type="button"
-                    onClick={() => handleQuickLogin('owner')}
+                    onClick={() => {
+                      handleFillDemo('demo@mizan.dz', 'Mizan2026!');
+                      handleQuickLogin('owner');
+                    }}
                     disabled={isLoading}
-                    className="p-2.5 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 font-bold text-xs flex flex-col items-center justify-center gap-1 transition-all cursor-pointer text-center group"
+                    className="p-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex flex-col items-center justify-center gap-1 shadow-lg shadow-emerald-900/30 transition-all cursor-pointer group text-center"
                   >
-                    <UserCheck className="w-4 h-4 text-emerald-400 group-hover:scale-110 transition-transform" />
-                    <span>المدير العام (أمين)</span>
-                    <span className="text-[9px] text-slate-400 font-normal">بيانات المبيعات والديون كاملة</span>
+                    <div className="flex items-center gap-1.5">
+                      <UserCheck className="w-4 h-4 text-emerald-100 group-hover:scale-110 transition-transform" />
+                      <span>دخول تجريبي (المدير)</span>
+                    </div>
+                    <span className="text-[9px] text-emerald-100/80 font-normal">بيانات المبيعات والديون كاملة</span>
                   </button>
+
                   <button
                     type="button"
-                    onClick={() => handleQuickLogin('collector')}
+                    onClick={() => {
+                      handleFillDemo('karim@mizan.dz', 'Mizan2026!');
+                      handleQuickLogin('collector');
+                    }}
                     disabled={isLoading}
-                    className="p-2.5 rounded-xl bg-teal-500/10 hover:bg-teal-500/20 border border-teal-500/30 text-teal-300 font-bold text-xs flex flex-col items-center justify-center gap-1 transition-all cursor-pointer text-center group"
+                    className="p-2.5 rounded-xl bg-teal-700 hover:bg-teal-600 text-white font-bold text-xs flex flex-col items-center justify-center gap-1 shadow-lg shadow-teal-900/30 transition-all cursor-pointer group text-center"
                   >
-                    <Briefcase className="w-4 h-4 text-teal-400 group-hover:scale-110 transition-transform" />
-                    <span>مسؤول التحصيل (كريم)</span>
-                    <span className="text-[9px] text-slate-400 font-normal">مهام الزيارات والتحصيل</span>
+                    <div className="flex items-center gap-1.5">
+                      <Briefcase className="w-4 h-4 text-teal-100 group-hover:scale-110 transition-transform" />
+                      <span>دخول تجريبي (المحصل)</span>
+                    </div>
+                    <span className="text-[9px] text-teal-100/80 font-normal">مهام الزيارات والتحصيل</span>
                   </button>
                 </div>
+
                 <button
                   type="button"
-                  onClick={() => handleQuickLogin('owner', 'مؤسستي التجارية الخاصة')}
-                  disabled={isLoading}
-                  className="w-full py-2 px-3 rounded-lg bg-slate-800/80 hover:bg-slate-800 border border-slate-700 text-slate-200 hover:text-white text-[11px] font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                  onClick={() => handleFillDemo('demo@mizan.dz', 'Mizan2026!')}
+                  className="w-full py-1.5 px-3 rounded-lg bg-slate-800/80 hover:bg-slate-800 border border-slate-700 text-slate-300 hover:text-white text-[11px] font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                 >
-                  <Building2 className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>أو بدء منشأة خاصة جديدة ونظيفة فوراً</span>
+                  <KeyRound className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>تعبئة البريد وكلمة المرور في الحقول أدناه</span>
                 </button>
               </div>
 

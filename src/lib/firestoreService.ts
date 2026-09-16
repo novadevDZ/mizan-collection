@@ -320,6 +320,55 @@ export async function loginWithFirestore(
   const normalizedEmail = normalizeAuthEmail(emailOrPhone);
   const passToUse = password && password.length >= 6 && password !== '••••••••' ? password : 'Mizan2026!';
 
+  // Explicit demo credentials handler
+  const isDemoOwner = ['demo@mizan.dz', 'admin@mizan.dz', 'amine@distri-alger.dz'].includes(normalizedEmail);
+  const isDemoCollector = ['karim@mizan.dz', 'collector@mizan.dz', 'karim.b@distri-alger.dz'].includes(normalizedEmail);
+
+  if (isDemoOwner || isDemoCollector) {
+    const demoUser: User = {
+      id: isDemoCollector ? 'user-03' : 'user-demo',
+      organizationId: 'org-algeria-dist-01',
+      name: isDemoCollector ? 'كريم براهيمي (مسؤول التحصيل)' : 'أمين بن علي (المدير العام)',
+      email: normalizedEmail,
+      phone: isDemoCollector ? '0770 88 99 00' : '0550 11 22 33',
+      role: isDemoCollector ? 'collector' : 'owner',
+    };
+    const demoOrg: Organization = {
+      id: 'org-algeria-dist-01',
+      name: 'مؤسسة التوزيع السريع الجزائر',
+      legalName: 'SARL DISTRIBU-ALGER',
+      tradeName: 'DISTRIBU-ALGER',
+      businessType: 'توزيع المواد الغذائية والاستهلاكية بالجملة',
+      commercialRegister: '16/00-1234567B26',
+      taxNumber: '002616012345678',
+      wilaya: '16 - الجزائر العاصمة',
+      commune: 'براقي',
+      phone: '0560 12 34 56',
+      currency: 'DZD',
+      plan: 'business',
+      subscriptionStatus: 'active',
+      createdAt: '2026-01-01',
+    };
+
+    try {
+      await setDoc(doc(db, 'organizations', demoOrg.id), {
+        ...demoOrg,
+        updatedAt: serverTimestamp(),
+      }, { merge: true });
+      await setDoc(doc(db, 'users', demoUser.id), {
+        ...demoUser,
+        updatedAt: serverTimestamp(),
+      }, { merge: true });
+    } catch (e) {
+      console.warn('Notice writing demo credentials to firestore:', e);
+    }
+
+    localStorage.setItem('mizan_current_user', JSON.stringify(demoUser));
+    localStorage.setItem('mizan_current_org', JSON.stringify(demoOrg));
+    localStorage.setItem('mizan_auth_session', 'true');
+    return { user: demoUser, organization: demoOrg };
+  }
+
   let uid: string | null = null;
   try {
     const cred = await signInWithEmailAndPassword(auth, normalizedEmail, passToUse);

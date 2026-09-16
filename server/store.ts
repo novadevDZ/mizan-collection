@@ -131,42 +131,64 @@ class DataStore {
   public products: Product[];
   public auditLogs: Array<{ id: string; timestamp: string; action: string; entity: string; entityId: string; user: string; metadata?: any }>;
 
-  constructor() {
-    this.organization = {
-      id: 'org-main',
-      name: 'مؤسستي التجارية',
-      legalName: 'مؤسستي التجارية',
-      businessType: 'تجارة وتوزيع',
-      wilaya: 'الجزائر العاصمة',
-      phone: '0550 00 00 00',
-      currency: 'DZD',
-      plan: 'starter',
-      createdAt: new Date().toISOString().split('T')[0],
-    };
-    this.users = [];
-    this.customers = [];
-    this.invoices = [];
-    this.payments = [];
-    this.ledgerEntries = [];
-    this.collectionTasks = [];
-    this.collectionAttempts = [];
-    this.promiseToPays = [];
-    this.auditLogs = [];
-    this.products = DEFAULT_ALGERIAN_PRODUCTS.map(p => ({
-      ...p,
-      organizationId: this.organization.id,
-    }));
-    this.recomputeAll();
+  constructor(seedDemo = true) {
+    if (seedDemo) {
+      const demo = generateInitialAlgerianData();
+      this.organization = demo.organization;
+      this.users = demo.users;
+      this.customers = demo.customers;
+      this.invoices = demo.invoices;
+      this.payments = demo.payments;
+      this.ledgerEntries = demo.ledgerEntries;
+      this.collectionTasks = demo.collectionTasks;
+      this.collectionAttempts = demo.collectionAttempts;
+      this.promiseToPays = demo.promiseToPays;
+      this.auditLogs = [];
+      this.products = DEFAULT_ALGERIAN_PRODUCTS.map(p => ({
+        ...p,
+        organizationId: this.organization.id,
+      }));
+      this.recomputeAll();
+    } else {
+      this.organization = {
+        id: 'org-main',
+        name: 'مؤسستي التجارية',
+        legalName: 'مؤسستي التجارية',
+        businessType: 'تجارة وتوزيع',
+        wilaya: 'الجزائر العاصمة',
+        phone: '0550 00 00 00',
+        currency: 'DZD',
+        plan: 'starter',
+        createdAt: new Date().toISOString().split('T')[0],
+      };
+      this.users = [];
+      this.customers = [];
+      this.invoices = [];
+      this.payments = [];
+      this.ledgerEntries = [];
+      this.collectionTasks = [];
+      this.collectionAttempts = [];
+      this.promiseToPays = [];
+      this.auditLogs = [];
+      this.products = DEFAULT_ALGERIAN_PRODUCTS.map(p => ({
+        ...p,
+        organizationId: this.organization.id,
+      }));
+      this.recomputeAll();
+    }
   }
 
   public resetToDemo(): void {
-    this.customers = [];
-    this.invoices = [];
-    this.payments = [];
-    this.ledgerEntries = [];
-    this.collectionTasks = [];
-    this.collectionAttempts = [];
-    this.promiseToPays = [];
+    const demo = generateInitialAlgerianData();
+    this.organization = demo.organization;
+    this.users = demo.users;
+    this.customers = demo.customers;
+    this.invoices = demo.invoices;
+    this.payments = demo.payments;
+    this.ledgerEntries = demo.ledgerEntries;
+    this.collectionTasks = demo.collectionTasks;
+    this.collectionAttempts = demo.collectionAttempts;
+    this.promiseToPays = demo.promiseToPays;
     this.auditLogs = [];
     this.products = DEFAULT_ALGERIAN_PRODUCTS.map(p => ({
       ...p,
